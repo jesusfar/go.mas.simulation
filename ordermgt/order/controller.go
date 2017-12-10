@@ -6,7 +6,11 @@ import (
 	"net/http"
 )
 
-func CreateOrderController(c *gin.Context) {
+type Controller struct {
+	OrderService Service `inject:"inline"`
+}
+
+func (ctrl *Controller) CreateOrderController(c *gin.Context) {
 
 	var request CreateOrderRequest
 
@@ -14,7 +18,7 @@ func CreateOrderController(c *gin.Context) {
 
 	fmt.Println(request)
 
-	response, err := CreateOrderService(request)
+	response, err := ctrl.OrderService.CreateOrderService(request)
 
 	if err != nil {
 		// return response
