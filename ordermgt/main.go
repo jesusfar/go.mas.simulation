@@ -1,13 +1,13 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
-	"github.com/jesusfar/go.mas.simulation/ordermgt/order"
-	"github.com/jesusfar/go.mas.simulation/environment"
-	"github.com/facebookgo/inject"
 	"fmt"
-	"os"
+	"github.com/facebookgo/inject"
 	"github.com/garyburd/redigo/redis"
+	"github.com/gin-gonic/gin"
+	"github.com/jesusfar/go.mas.simulation/environment"
+	"github.com/jesusfar/go.mas.simulation/ordermgt/order"
+	"os"
 )
 
 var Env environment.Env
@@ -21,7 +21,7 @@ func healthCheckController(c *gin.Context) {
 func main() {
 	var g inject.Graph
 
-	var env  environment.Env
+	var env environment.Env
 	var controller order.Controller
 	var service order.Service
 	var orderRepository order.RedisRepository
@@ -48,10 +48,10 @@ func main() {
 
 	r := gin.Default()
 
-
 	r.GET("/health", healthCheckController)
 
 	r.POST("/order", controller.CreateOrderController)
+	r.GET("/order/:id", controller.GetOrderById)
 
 	r.Run(":9000")
 }

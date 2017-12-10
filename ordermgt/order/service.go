@@ -1,16 +1,25 @@
 package order
 
+import "fmt"
+
 type Service struct {
 	OrderRepository RedisRepository `inject:"inline"`
 }
 
-func (service *Service) CreateOrderService(request CreateOrderRequest) (CreateOrderRequest, error) {
+func (service *Service) CreateOrderService(request CreateOrderRequest) (*order, error) {
 
-	conn := service.OrderRepository.DBPoolConn.Get()
+	order := NewOrder(request.Priority, request.Category)
 
-	order := NewOrder()
+	fmt.Println(order)
 
-	conn.Do("SET", order.GetId(), order)
+	service.OrderRepository.save(order)
 
-	return request, nil
+	return order, nil
+}
+
+func (service *Service) GetOrderByIdService(orderI string) (*order, error) {
+
+	order, err := service.OrderRepository.getById(orderI)
+
+	return order, err
 }

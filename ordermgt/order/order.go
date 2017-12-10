@@ -1,36 +1,42 @@
 package order
 
+import "github.com/satori/go.uuid"
+
 type specification struct {
-	id string
+	Id string
 }
 
 type characteristic struct {
-	name  string
-	value string
+	Name  string
+	Value string
 }
 
 type product struct {
-	characteristics []characteristic
+	Characteristics []characteristic
 }
 
 type orderItem struct {
-	action        string
-	specification specification
-	product       product
+	Action        string
+	Specification specification
+	Product       product
 }
 
 type order struct {
-	id int
-	priority           int
-	category           string
-	requestedStartDate string
-	orderItem          []orderItem
+	Id                 uuid.UUID `json:"id"`
+	Priority           int `json:"priority"`
+	Category           string `json:"category"`
+	RequestedStartDate string `json:"requestedStarDate"`
+	OrderItem          []orderItem `json:"orderItem"`
 }
 
-func NewOrder() (*order) {
-	return &order{}
+func NewOrder(priority int, category string) *order {
+	return &order{
+		Id:       uuid.NewV4(),
+		Priority: priority,
+		Category: category,
+	}
 }
 
-func (o *order) GetId() int {
-	return o.id
+func (o *order) GetId() uuid.UUID {
+	return o.Id
 }

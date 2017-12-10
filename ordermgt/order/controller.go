@@ -21,8 +21,19 @@ func (ctrl *Controller) CreateOrderController(c *gin.Context) {
 	response, err := ctrl.OrderService.CreateOrderService(request)
 
 	if err != nil {
-		// return response
+		// TODO Handle error
 	}
 
 	c.JSON(http.StatusCreated, response)
+}
+
+func (ctrl *Controller) GetOrderById(c *gin.Context) {
+
+	response, err := ctrl.OrderService.GetOrderByIdService(c.Param("id"))
+
+	if err != nil {
+		// TODO Handle error
+	}
+
+	c.JSON(http.StatusOK, response)
 }
