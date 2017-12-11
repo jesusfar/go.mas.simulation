@@ -38,6 +38,12 @@
   revision = "1e59b77b52bf8e4b449a57e6f79f21226d571845"
 
 [[projects]]
+  branch = "master"
+  name = "github.com/jesusfar/go.mas"
+  packages = ["agent"]
+  revision = "c4d496ca26bae4d1886122edc4f764984ae46c22"
+
+[[projects]]
   name = "github.com/mattn/go-isatty"
   packages = ["."]
   revision = "0360b2af4f38e8d38c7fce2a9f4e702702d73a39"
@@ -53,13 +59,13 @@
   branch = "master"
   name = "github.com/ugorji/go"
   packages = ["codec"]
-  revision = "f0aa215a7d653544d39d0e27dfa10fa4b183f397"
+  revision = "f57d8945648dbfe4c332cff9c50fb57548958e3f"
 
 [[projects]]
   branch = "master"
   name = "golang.org/x/sys"
   packages = ["unix"]
-  revision = "9167dbfd0f8e88b731dd88cbf73a270701a37bb4"
+  revision = "b8f5ef32195cae6470b728e8ca677f0dbed1a004"
 
 [[projects]]
   name = "gopkg.in/go-playground/validator.v8"
@@ -76,6 +82,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "0eaed5ed89cd88b3ed04acfc2fcedc85892e91b539aedbd3738f38ff7a2806bc"
+  inputs-digest = "a06d14b6455a1dad21fc261258c5015b74a952d67c3089f023888c05138afe9f"
   solver-name = "gps-cdcl"
   solver-version = 1

@@ -10,8 +10,6 @@ import (
 	"os"
 )
 
-var Env environment.Env
-
 func healthCheckController(c *gin.Context) {
 	c.JSON(200, gin.H{
 		"status": "OK",
